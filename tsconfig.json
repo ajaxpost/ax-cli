@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "declaration": true, // 生成声明文件
+    "declarationDir": "./lib", // 声明文件的输出路径
+    "baseUrl": ".",
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "forceConsistentCasingInFileNames": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false, // False:允许隐式的any类型
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": false,
+    "paths": {
+      "@/*": ["src/*"],
+      "@@/*": ["./*"]
+    }
+  },
+  "include": ["./src/**/*", "./src/declaration/**/*.ts"], // 类型声明文件(.d.ts)必须放在include解析的目录中
+  "exclude": ["node_modules", "build", "dist", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts", "*.js"]
+}
