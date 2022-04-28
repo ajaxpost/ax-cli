@@ -1,9 +1,9 @@
 const { merge } = require('webpack-merge');
 const { baseConfig } = require('./webpack.base.config');
-const webpack = require('webpack');
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 
-const port = 9090;
+const port = 9091;
 
 module.exports = merge(baseConfig, {
   mode: 'development',
@@ -82,9 +82,8 @@ module.exports = merge(baseConfig, {
     },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      // 定义环境变量
-      'process.env.NODE_ENV': JSON.stringify('development'),
+    new Dotenv({
+      path: path.resolve(__dirname, '../.env.development'),
     }),
   ],
 });

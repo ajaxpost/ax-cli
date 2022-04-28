@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const Dotenv = require('dotenv-webpack');
 
 const baseConfig = {
   entry: {
@@ -80,6 +81,9 @@ const baseConfig = {
     new WebpackBar({
       name: 'ax-cli',
       color: 'green',
+    }),
+    new Dotenv({
+      path: path.resolve(__dirname, '../.env.development'),
     }),
   ],
   resolve: {

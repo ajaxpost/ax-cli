@@ -2,8 +2,9 @@ const { merge } = require('webpack-merge');
 const { baseConfig } = require('./webpack.base.config');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin'); // css 压缩优化
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin'); // Webpack自带,无需安装(JS 压缩)
+const Dotenv = require('dotenv-webpack');
+const path = require('path');
 
 module.exports = merge(baseConfig, {
   mode: 'production',
@@ -62,12 +63,11 @@ module.exports = merge(baseConfig, {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      // 定义环境变量
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name]_[chunkhash:8].css',
+    }),
+    new Dotenv({
+      path: path.require(__dirname, '../.env.production'),
     }),
   ],
 });
