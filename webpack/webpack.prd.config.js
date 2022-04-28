@@ -67,7 +67,7 @@ module.exports = merge(baseConfig, {
       filename: 'css/[name]_[chunkhash:8].css',
     }),
     new Dotenv({
-      path: path.require(__dirname, '../.env.production'),
+      path: path.resolve(__dirname, '../.env.production'),
     }),
   ],
 });
